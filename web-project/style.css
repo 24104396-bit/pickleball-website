@@ -1,178 +1,134 @@
-/* Thiết lập chung & Hiệu ứng mượt mà */
+/* Thiết lập chung và reset */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.7;
-  color: #2c2c2c;
-  background-color: #f4f6f8;
+  background-color: #121212;
+  color: #e0e0e0;
+  line-height: 1.6;
 }
 
-/* Yêu cầu 3: Liên kết "Chuyển đến nội dung chính" */
+/* Skip link hỗ trợ Accessibility (A11y) */
 .skip-link {
   position: absolute;
-  top: -50px;
+  top: -40px;
   left: 0;
-  background: #0f172a;
-  color: #06b6d4; /* Xanh ngọc pickleball */
-  padding: 10px 20px;
+  background: #00bcd4;
+  color: #121212;
+  padding: 8px;
   z-index: 100;
+  transition: top 0.3s;
   text-decoration: none;
   font-weight: bold;
-  transition: top 0.3s ease;
 }
 
 .skip-link:focus {
   top: 0;
 }
 
-/* Yêu cầu 4 & 7: Thanh điều hướng dùng Flexbox */
+/* Header & Navigation (Flexbox) */
 header {
-  background: linear-gradient(135deg, #0f172a, #1e293b);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  background-color: #1e1e1e;
+  border-bottom: 2px solid #00bcd4;
+  padding: 1rem 2rem;
 }
 
 nav ul {
   list-style: none;
-  display: flex; /* Flexbox */
+  display: flex;
   justify-content: center;
-  gap: 40px;
-  padding: 20px 0;
+  gap: 2rem;
 }
 
-nav a {
-  color: #e2e8f0;
+nav ul li a {
+  color: #e0e0e0;
   text-decoration: none;
   font-weight: 600;
-  letter-spacing: 1px;
-  padding: 8px 16px;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
   border-radius: 4px;
-  transition: all 0.3s ease; /* Yêu cầu 8 */
+  transition: background 0.3s, color 0.3s;
 }
 
-/* Yêu cầu 8: Hiệu ứng hover cho menu */
-nav a:hover, nav a.active {
-  background-color: #06b6d4; /* Xanh ngọc thể thao */
-  color: #0f172a;
-  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);
+nav ul li a:hover,
+nav ul li a.active {
+  background-color: #00bcd4;
+  color: #121212;
 }
 
-/* Khung nội dung chính dạng Card cao cấp */
+/* Nội dung chính (Main Content) */
 main {
-  max-width: 950px;
-  margin: 40px auto;
-  padding: 40px;
-  background: #ffffff;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  border-radius: 12px;
-  border: 1px solid #e2e8f0;
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
 }
 
 h1, h2 {
-  color: #0f172a;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  margin-bottom: 20px;
+  color: #00bcd4;
+  margin-bottom: 1rem;
 }
 
 h1 {
-  font-size: 2.2rem;
-  border-bottom: 2px solid #06b6d4;
-  padding-bottom: 10px;
-  display: inline-block;
+  font-size: 2.5rem;
+  text-align: center;
 }
 
 p {
-  color: #475569;
-  margin-bottom: 20px;
-  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
 }
 
-/* Yêu cầu 5: Tạo kiểu hình ảnh bằng Box Model */
-img {
-  padding: 10px;
-  border: 1px solid #cbd5e1;
-  border-radius: 12px;
-  background-color: #fff;
+/* Hình ảnh chung */
+main img {
+  display: block;
   max-width: 100%;
   height: auto;
-  display: block;
-  margin: 25px auto;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease;
-}
-
-img:hover {
-  transform: scale(1.01);
-}
-
-/* Yêu cầu 6: Áp dụng Grid cho phần tử cha (Ít nhất 2 cột) */
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 25px;
-  margin-top: 25px;
-}
-
-.grid-item {
-  background: #f8fafc;
-  padding: 25px;
+  margin: 1.5rem auto;
   border-radius: 8px;
-  border-left: 4px solid #06b6d4;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-  transition: transform 0.3s ease;
+  border: 2px solid #333;
+  box-shadow: 0 4px 15px rgba(0, 188, 212, 0.2);
 }
 
-.grid-item:hover {
-  transform: translateY(-5px);
-}
-
-/* Yêu cầu 9: Bộ chọn nth-child tuỳ biến Gallery ảnh */
+/* Thư viện ảnh (CSS Grid Layout) */
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
 
-.gallery-grid img:nth-child(1) {
-  border-radius: 6px;
-  border-color: #06b6d4;
+.gallery-grid img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 0;
 }
 
-.gallery-grid img:nth-child(2) {
-  border-radius: 25px;
-  border-color: #3b82f6;
+.gallery-grid img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(0, 188, 212, 0.4);
 }
 
-.gallery-grid img:nth-child(3) {
-  border-radius: 50%; /* Ảnh tròn */
-  border-color: #10b981;
+/* Sử dụng pseudo-class :nth-child cho các phần tử */
+.gallery-grid img:nth-child(odd) {
+  border-color: #00bcd4;
 }
 
-.gallery-grid img:nth-child(4) {
-  border-radius: 30px 5px;
-  border-color: #f59e0b;
+.gallery-grid img:nth-child(even) {
+  border-color: #ffb703;
 }
 
-.gallery-grid img:nth-child(5) {
-  border-radius: 15px;
-  border-color: #8b5cf6;
-}
-
-/* Chân trang */
+/* Footer */
 footer {
   text-align: center;
-  padding: 30px;
-  background: #0f172a;
-  color: #94a3b8;
-  font-size: 0.9rem;
-  margin-top: 60px;
-  border-top: 1px solid #1e293b;
+  padding: 1.5rem;
+  background-color: #1e1e1e;
+  border-top: 1px solid #333;
+  color: #888;
+  margin-top: 3rem;
 }
